@@ -1,6 +1,6 @@
 # 202202_formation_docker
 
-Formation interne Docker
+Formation interne Docker.
 
 ## Getting started
 
