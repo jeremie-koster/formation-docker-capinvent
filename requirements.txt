@@ -1,0 +1,8 @@
+tensorflow-cpu==2.3.0
+keras
+efficientnet
+fastapi
+numpy
+opencv-python
+scikit-image
+uvicorn
