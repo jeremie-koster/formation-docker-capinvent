@@ -11,6 +11,9 @@ Instruction
 5. Build l’image (ne pas oublier d’utiliser le paramètre –t pour nommer notre image)
 6. Run l’image avec les bon paramètres (indice –p pour exposer le port, -v pour faire le mapping du volume)
 7. Tester l’api avec les commandes suivantes :
->>> python 
->>> import request
->>> requests.post('http://0.0.0.0:8000/prediction',json={'name':'tailed_frog.jpeg’})
+
+```
+python 
+import request
+requests.post('http://0.0.0.0:8000/prediction',json={'name':'tailed_frog.jpeg’})
+```
