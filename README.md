@@ -1,19 +1,21 @@
-# But du TP 
+# TP 1
 
-Déployer une image Docker qui expose une API. Cette API retourne le résultat d'une classification faite sur une image passé en input.
+## But du TP 
+
+Exécuter une image Docker qui expose une API. Cette API retourne le résultat d'une classification faite sur une image passé en input.
 
 Remarque : il suffit de donner le nom de l'image en input du call API car l'on spécifiera un volume sur lequel l'API pourra aller chercher l'image en question.
 
 ![Alt text](./assets/schema_tp1_docker.png?raw=true "schema TP1")
 
 
-Instruction
-1. Construire le Dockerfile depuis une image content tensorflow 2.3.0 (FROM ): 
+## Instruction
+1. Construire le Dockerfile depuis une image content tensorflow 2.3.0 (FROM tensorflow/tensorflow:2.3.0): 
 2. Installer les requirements
 3. Copier le code source depuis l’environnement local vers le conteneur.
 4. Setup la command qui sera exécutée lors de l’exécution du conteneur.
-5. Build l’image (ne pas oublier d’utiliser le paramètre –t pour nommer notre image)
-6. Run l’image avec les bon paramètres (indice –p pour exposer le port, -v pour faire le mapping du volume)
+5. Build l’image, ne pas oublier de nommer notre image : https://docs.docker.com/engine/reference/commandline/build/
+6. Run l’image avec les bon paramètres, ne pas oublier de mapper les ports et les volumes : https://docs.docker.com/engine/reference/commandline/run/
 7. Tester l’api avec les commandes suivantes :
 
 ```
