@@ -1,6 +1,10 @@
 # But du TP 
 
-Déployer une image Docker qui expose une API. Cette API retourne une prédiction faite sur un nom d'image passé en input.
+Déployer une image Docker qui expose une API. Cette API retourne le résultat d'une classification faite sur une image passé en input.
+
+Remarque : il suffit de donner le nom de l'image en input du call API car l'on spécifiera un volume sur lequel l'API pourra aller chercher l'image en question.
+
+![Alt text](./assets/schema_tp1_docker.png?raw=true "schema TP1")
 
 
 Instruction
