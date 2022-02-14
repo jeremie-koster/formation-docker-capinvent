@@ -19,7 +19,12 @@ def read_root():
 @app.post("/prediction", response_model=PredictionReturned)
 async def predict(data: InputName, response: Response):
     model = ModelHandler()
-    prediction = model.predict(data.name)
+    try :
+        prediction = model.predict(data.name)
+    except FileNotFoundError:
+            prediction = {"prediction": 'file not found error'}
+    except Exception as e:
+            prediction = {"prediction": str(e)}
     return PredictionReturned(prediction=prediction.get("prediction", ""), score=prediction.get("score", 0))
 
 @app.get("/healthcheck")

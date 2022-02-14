@@ -38,7 +38,7 @@ class ModelHandler:
                 array_img= array_img[:,:,:3]
         else :
             logger.error("file not found")
-            array_img = np.zeros((100,100, 3))
+            raise FileNotFoundError()
         return array_img
 
     def _preprocess(self, img):
