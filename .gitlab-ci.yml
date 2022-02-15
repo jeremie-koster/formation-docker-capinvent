@@ -16,8 +16,8 @@ build:
     - docker logout "$CI_REGISTRY"
 
   script:
-    - docker build -t "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/101:$CI_COMMIT_REF_NAME" .
-    - docker push "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/101:$CI_COMMIT_REF_NAME"
+    - docker build -t "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/superimage:$CI_COMMIT_REF_NAME" .
+    - docker push "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/superimage:$CI_COMMIT_REF_NAME"
 
   rules:
     - if: $CI_COMMIT_BRANCH == "feature/cicd"
