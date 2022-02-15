@@ -1,0 +1,27 @@
+stages:
+  - build
+
+build:
+  stage: build
+
+  image: docker:latest
+
+  services:
+    - docker:18.09.7-dind
+
+  before_script:
+    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+
+  after_script:
+    - docker logout "$CI_REGISTRY"
+
+  script:
+    - docker build -t "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/101:$CI_COMMIT_REF_NAME" .
+    - docker push "$CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/101:$CI_COMMIT_REF_NAME"
+
+  tags:
+    - build
+
+  rules:
+    - if: $CI_COMMIT_BRANCH == "feature/cicd"
+
