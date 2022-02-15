@@ -23,7 +23,7 @@ build:
     - docker
     - gitlab-org
     - gitlab-org-docker
+    - primary
 
   rules:
     - if: $CI_COMMIT_BRANCH == "feature/cicd"
-
