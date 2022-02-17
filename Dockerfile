@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.3.0
+FROM --platform=linux/amd64 tensorflow/tensorflow:2.3.0
 
 COPY requirements.txt .
 RUN python -m pip install --upgrade pip
