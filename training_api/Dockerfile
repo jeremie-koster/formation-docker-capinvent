@@ -1,13 +1,13 @@
 FROM python:3.8
 
 # Dockerfile of the training api
-COPY requirements.txt tmp/requirements.txt
-RUN pip install -r tmp/requirements.txt
+COPY ...
+RUN ...
 
-COPY /app /app
+COPY ...
 
-EXPOSE 8000
+EXPOSE ...
 
 ENV GIT_PYTHON_REFRESH=quiet
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "...", "--host", "0.0.0.0", "--port", "..."]
