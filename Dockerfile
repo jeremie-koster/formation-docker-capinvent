@@ -1,12 +1,12 @@
 FROM --platform=linux/amd64 tensorflow/tensorflow:2.3.0
 
-COPY requirements.txt .
+COPY ...
 RUN python -m pip install --upgrade pip
-RUN python -m pip install -r requirements.txt
-COPY ./src/ /app
+RUN ...
+COPY ...
 
 WORKDIR /app
 
-EXPOSE 8000
+EXPOSE ...
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "...", "--host", "0.0.0.0", "--port", "..."]
