@@ -1,4 +1,5 @@
 tensorflow-cpu==2.3.0
+mlflow==1.14.1
 keras
 efficientnet
 fastapi
@@ -6,3 +7,4 @@ numpy
 opencv-python
 scikit-image
 uvicorn
+boto3

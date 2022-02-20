@@ -1,0 +1,8 @@
+mlflow==1.14.1
+tensorflow-cpu==2.3.0
+keras
+efficientnet
+fastapi
+uvicorn
+pandas
+boto3

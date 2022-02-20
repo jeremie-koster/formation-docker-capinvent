@@ -3,12 +3,16 @@ import os
 import logging
 
 import numpy as np
+import mlflow
 from skimage.io import imread
 from pydantic import BaseModel
 from efficientnet.tfkeras import EfficientNetB0
 from efficientnet.tfkeras import center_crop_and_resize, preprocess_input
 from tensorflow.keras.applications.imagenet_utils import decode_predictions
 
+MLFLOW_TRACKING_URI="http://mlflow:5000"
+MODEL_NAME="image_classification_model"
+STAGE="Production"
 
 logger = logging.getLogger(__name__)
 
@@ -20,18 +24,18 @@ class PredictionReturned(BaseModel):
 class InputName(BaseModel):
     name: str
 
-
 class ModelHandler:
     def __init__(self):
         self.model = self.load_model()
-        self.target_size = self.model.input_shape[1]
+        self.target_size = 224
 
     def load_model(self):
-        model = EfficientNetB0(weights='imagenet')
+        mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+        model = mlflow.pyfunc.load_model(model_uri=f"models:/{MODEL_NAME}/{STAGE}")
         return model
     
     def load_img(self, name):
-        path = os.path.join('/examples', name)
+        path = os.path.join('/image_examples', name)
         if os.path.isfile(path):
             array_img = imread(path)
             if len(array_img.shape) == 3 and array_img.shape[2]==4:
@@ -44,7 +48,6 @@ class ModelHandler:
     def _preprocess(self, img):
         x = center_crop_and_resize(img, image_size=self.target_size)
         x = preprocess_input(x)
-        print(x.shape)
         x = np.expand_dims(x, 0)
         return x
 
