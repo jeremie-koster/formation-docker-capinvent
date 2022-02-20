@@ -23,3 +23,8 @@ python
 import request
 requests.post('http://0.0.0.0:<exposed_port>/prediction',json={'name':'<image_name>’})
 ```
+
+8. Once you are done, you can stop and delete all your containers with : 
+    `
+    docker container stop $(docker container ls -aq) && docker system prune -af --volumes
+    `
