@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from efficientnet.tfkeras import EfficientNetB0
 from efficientnet.tfkeras import center_crop_and_resize, preprocess_input
 from tensorflow.keras.applications.imagenet_utils import decode_predictions
+from .settings import DOCKER_VOLUME_PATH
 
 
 logger = logging.getLogger(__name__)
@@ -31,7 +32,7 @@ class ModelHandler:
         return model
     
     def load_img(self, name):
-        path = os.path.join('/examples', name)
+        path = os.path.join(DOCKER_VOLUME_PATH, name)
         if os.path.isfile(path):
             array_img = imread(path)
             if len(array_img.shape) == 3 and array_img.shape[2]==4:
