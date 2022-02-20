@@ -15,19 +15,27 @@ root, attention à ne pas faire n'importe quoi (pas de rm -rf ;) ).
     `
 
     Pour créer ce fichier nous allons donc passer en mode root avec la commande "sudo -s":
+
     `
     sudo -s
+
     cd /Users/
+
     echo "top secret stuff" >> ./secrets.txt 
+
     chmod 0600 secrets.txt
+    
     exit 
     `
+
     la commande "chmod 0600" permet de restreindre les droits d 'accès au fichier au root seulement.
 
 2. Essayez de lire le fichier avec votre usr : 
+
     `
     cat secrets.txt 
     `
+
     Vous devriez avopir "permission denied", et ceci est normal.
 
 
@@ -43,10 +51,12 @@ root, attention à ne pas faire n'importe quoi (pas de rm -rf ;) ).
 Il existe deux solutions pour cela : 
 1. En utilisnt le paramètre --user depuis la commande run : : --user <uid>
     pour trouver votre uid, il suffit de tapper id dans votre temrinal. ex : 
+
     `
     lmichelis@MacBookPro-lmichelis-FVFXX1F4HV29 /Users % id
     uid=501(lmichelis)
     ` 
+
 2. En définissant les utilisateur de l'app direcetmeent dans le dockerfile 
     RUN groupadd -g 999 appuser && \
         useradd -r -u 999 -g appuser appuser
@@ -56,7 +66,9 @@ Il existe deux solutions pour cela :
 
 `sudo -s 
 cd /Users/
+
 rm secrets.txt 
+
 exit
 `
 
