@@ -32,14 +32,20 @@ root, attention à ne pas faire n'importe quoi (pas de rm -rf ;) ).
     cat secrets.txt 
     `
 
-    Vous devriez avopir "permission denied", et ceci est normal.
+    Vous devriez avoir "Permission denied", et ceci est normal.
 
 
 ### Essayons avec Docker...
 
-1. construire un Dockerfile qui a pour but d'afficher le contenu du fichier /Users/secrets.txt
-2. Build l'image et run l'image avec les bon paramètres (notez bien qu'il faudra monter un volume pour pouvoir accéder au fichier secrets.txt)
-3. Le contenu est il affiché ??
+1. Build l'image et run l'image :
+    `
+    docker run -v /:/hostOS -it --rm docker_tp3
+    `
+2. run dans le shell
+    `
+    whoami
+    `
+3. Essayez d'afficher le contenu avec la commande cat. Le contenu est il affiché ?? Vous pouvez potentiellement voir "Operation denied", ce message est du à une sécurité supplémentaire sur mac qu'il faut accorder au niveau application: le point important est que l'erreur n'est plus la même --> on n'a plus l'erreur "Permission denied"
 
 
 ### Bonne pratique, run docker image depuis un usr.
@@ -54,9 +60,11 @@ Il existe deux solutions pour cela :
     ```
 
 2. En définissant les utilisateur de l'app direcetmeent dans le dockerfile 
+    ```
     RUN groupadd -g 999 appuser && \
         useradd -r -u 999 -g appuser appuser
     USER appuser
+    ```
 
 ### Supprimer le fichier secrets.txt
 
