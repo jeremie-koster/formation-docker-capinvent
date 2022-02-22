@@ -66,6 +66,8 @@ Il existe deux solutions pour cela :
     USER appuser
     ```
 
+Regarder https://blog.stephane-robert.info/post/docker-rootless-securite-seccomp-namespace-capabilities/ et essayer cet exemple.
+
 ### Supprimer le fichier secrets.txt
 
 ```
