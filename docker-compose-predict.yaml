@@ -49,9 +49,6 @@ services:
         depends_on:
             - db
             - s3
-        links:
-            - db
-            - s3
         networks:
             - mlflow
 
@@ -66,10 +63,6 @@ services:
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
             - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_KEY}
             - MLFLOW_TRACKING_URI=http://mlflow:5000
-        links:
-            - mlflow
-            - db
-            - s3
         depends_on:
             - mlflow
         container_name: training_api
@@ -90,10 +83,6 @@ services:
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
             - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_KEY}
             - MLFLOW_TRACKING_URI=http://mlflow:5000
-        links:
-            - mlflow
-            - db
-            - s3
         depends_on:
             - mlflow
         container_name: serving_api
