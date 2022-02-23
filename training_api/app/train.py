@@ -24,7 +24,7 @@ class TrainingService:
                     "no_param": "this is a fake training",
                 }
             )
-            model = EfficientNetB0(weights='imagenet')
+            model = EfficientNetB0(weights="imagenet")
             mlflow.keras.log_model(
                 keras_model=model,
                 artifact_path="image_classification_model",

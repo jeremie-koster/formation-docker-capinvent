@@ -24,7 +24,7 @@ Nous allons faire cela en 2 temps, la première étape est d'entrainer le modèl
     - compléter le param "depends_on" pour mlflow et training_api.
 3. run 
     `
-    docker compose -f docker-compose-training.yaml --env-file ./.env up --build --no-deps
+    docker compose -f docker-compose-training.yaml --env-file .env up --build --no-deps
     `
 4. tester l'url http://0.0.0.0:<port_que_vous_avez_setup>. Pour lancer le "fake train", il suffit d'appeler http://0.0.0.0:<port_que_vous_avez_setup>/train.
 5. Check qu'un run mlflow s'est bien sauvegardé sur le volume en local.
@@ -46,7 +46,7 @@ Nous allons maintenant nous occuper de l'api qui va effectuer les prédictions.
     `
     docker compose -f docker-compose-predict.yaml --env-file ./.env up --build --no-deps
     `
-4. tester l'url http://0.0.0.0:<port_que_vous_avez_setup>. Pour effectuer une prédcition, il suffit d'appeler http://0.0.0.0:<port_que_vous_avez_setup>/prediction de la manière suivante :
+4. tester l'url http://0.0.0.0:<port_que_vous_avez_setup>. Pour effectuer une prédiction, il suffit d'appeler http://0.0.0.0:<port_que_vous_avez_setup>/prediction de la manière suivante :
 ```
 python
 import requests

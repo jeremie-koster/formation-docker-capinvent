@@ -51,16 +51,11 @@ services:
         depends_on:
             - ...
             - ...
-        links:
-            - db
-            - s3
         networks:
             - ...
 
     training_api:
         build: training_api
-        #volumes:
-        #    - ./data/training_data:/data/
         ports:
             - ...
         expose:
@@ -70,10 +65,6 @@ services:
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
             - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_KEY}
             - MLFLOW_TRACKING_URI=http://mlflow:5000
-        links:
-            - mlflow
-            - db
-            - s3
         depends_on:
             - ...
         container_name: training_api
