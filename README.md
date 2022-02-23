@@ -46,7 +46,7 @@ Nous allons maintenant nous occuper de l'api qui va effectuer les prédictions.
     `
     docker compose -f docker-compose-predict.yaml --env-file .env up --build --no-deps
     `
-4. tester l'url http://0.0.0.0:<port_que_vous_avez_setup>. Pour effectuer une prédcition, il suffit d'appeler http://0.0.0.0:<port_que_vous_avez_setup>/prediction de la manière suivante :
+4. tester l'url http://0.0.0.0:<port_que_vous_avez_setup>. Pour effectuer une prédiction, il suffit d'appeler http://0.0.0.0:<port_que_vous_avez_setup>/prediction de la manière suivante :
 ```
 python
 import requests
