@@ -1,10 +1,11 @@
 FROM tensorflow/tensorflow:2.3.0
 
-COPY ...
+COPY requirements.txt .
 RUN python -m pip install --upgrade pip
-RUN ...
-COPY ...
+RUN python -m pip install -r requirements.txt
 
-EXPOSE ...
+COPY app/ app/
 
-CMD ["uvicorn", "", "--host", "0.0.0.0", "--port", ""]
+EXPOSE 8001
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]

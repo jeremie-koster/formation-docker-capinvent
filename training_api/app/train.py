@@ -24,20 +24,17 @@ class TrainingService:
                     "no_param": "this is a fake training",
                 }
             )
-            model = EfficientNetB0(weights='imagenet')
+            model = EfficientNetB0(weights="imagenet")
             mlflow.keras.log_model(
                 keras_model=model,
                 artifact_path="image_classification_model",
                 registered_model_name="image_classification_model",
-            )
+            )            
     
             metrics_dict = {
                 "MAE": 0,
                 "MSE": 0,
                 "RMSE": 0,
-                "MAPE": round(
-                    0.0, 2
-                ),
+                "MAPE": 0
             }
             mlflow.log_metrics(metrics_dict)
-            #mlflow.log_artifact(f"{self.root_path}/{dataset_name}_data.csv")
