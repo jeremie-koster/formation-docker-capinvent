@@ -1,7 +1,7 @@
 import logging
 
 from fastapi import FastAPI, Response
-from .model import ModelHandler, PredictionReturned, InputName
+from model import ModelHandler, PredictionReturned, InputName
 
 logger = logging.getLogger(__name__)
 app = FastAPI()

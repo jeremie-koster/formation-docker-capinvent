@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from efficientnet.tfkeras import EfficientNetB0
 from efficientnet.tfkeras import center_crop_and_resize, preprocess_input
 from tensorflow.keras.applications.imagenet_utils import decode_predictions
-from .settings import DOCKER_VOLUME_PATH
+from settings import DOCKER_VOLUME_PATH
 
 
 logger = logging.getLogger(__name__)
