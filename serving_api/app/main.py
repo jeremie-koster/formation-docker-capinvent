@@ -19,7 +19,7 @@ def read_root():
 @app.post("/prediction", response_model=PredictionReturned)
 async def predict(data: InputName, response: Response):
     prediction = model.predict(data.name)
-    return PredictionReturned(prediction=prediction.get("prediction", ""), score=prediction.get("score", 0))
+    return PredictionReturned(prediction=str(prediction), score=0)
 
 @app.get("/healthcheck")
 async def healthcheck():

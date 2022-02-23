@@ -1,6 +1,7 @@
 import mlflow
 import pandas as pd
-from efficientnet.tfkeras import EfficientNetB0
+from sklearn import datasets
+from sklearn.svm import SVC
 
 
 MLFLOW_TRACKING_URI = "http://mlflow:5000"
@@ -10,8 +11,8 @@ class TrainingService:
         self.root_path = "/path_to_data"
 
     def load_data(self, dataset_name):
-        df = pd.DataFrame()
-        return df
+        data = datasets.load_iris()
+        return data
 
     def train(self, dataset_name: str):
         if MLFLOW_TRACKING_URI:
@@ -21,14 +22,16 @@ class TrainingService:
         with mlflow.start_run(run_name="train"):
             mlflow.log_params(
                 {
-                    "no_param": "this is a fake training",
+                    "no_param": "this is a real training",
                 }
             )
-            model = EfficientNetB0(weights='imagenet')
-            mlflow.keras.log_model(
-                keras_model=model,
-                artifact_path="image_classification_model",
-                registered_model_name="image_classification_model",
+            # model = EfficientNetB0(weights='imagenet')
+            model = SVC()
+            model.fit(data.data, data.target)
+            mlflow.sklearn.log_model(
+                sk_model=model,
+                artifact_path="iris_classification_model",
+                registered_model_name="iris_classification_model",
             )
     
             metrics_dict = {
