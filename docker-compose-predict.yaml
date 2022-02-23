@@ -15,7 +15,12 @@ services:
         command: minio server /data
         healthcheck:
             test:
-                ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+                [
+                    "CMD",
+                    "curl",
+                    "-f",
+                    "http://localhost:9000/minio/health/live"
+                ]
             interval: 30s
             timeout: 20s
             retries: 3
@@ -38,33 +43,33 @@ services:
         image: mlflow_server
         container_name: mlflow_server
         volumes:
-           - ./data/mlflow:/data/
+            - ./data/mlflow:/data/
         ports:
-            - ...
+            - 5000:5000
         expose:
-            - ...
+            - 5000
         environment:
             - MLFLOW_S3_ENDPOINT_URL=http://s3:9000
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
             - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_KEY}
         command: mlflow server --backend-store-uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE} --default-artifact-root s3://mlflow/ --host 0.0.0.0
         depends_on:
-            - ...
-            - ...
+            - db
+            - s3
         links:
             - db
             - s3
         networks:
-            - ...
+            - mlflow
 
     training_api:
         build: training_api
         #volumes:
         #    - ./data/training_data:/data/
         ports:
-            - ...
+            - 8000:8000
         expose:
-            - ...
+            - 8000
         environment:
             - MLFLOW_S3_ENDPOINT_URL=http://s3:9000
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
@@ -75,20 +80,20 @@ services:
             - db
             - s3
         depends_on:
-            - ...
+            - mlflow
         container_name: training_api
         networks:
-            - ...
+            - mlflow
         restart: always
 
     serving_api:
         build: serving_api
         volumes:
-            - ...
+            - ./data/iris_examples:/data/iris_examples/
         ports:
-            - ...
+            - 8001:8001
         expose:
-            - ...
+            - 8001
         environment:
             - MLFLOW_S3_ENDPOINT_URL=http://s3:9000
             - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
@@ -99,10 +104,10 @@ services:
             - db
             - s3
         depends_on:
-            - ...
+            - mlflow
         container_name: serving_api
         networks:
-            - ...
+            - mlflow
         restart: always
 
 networks:
