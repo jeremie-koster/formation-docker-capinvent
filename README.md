@@ -4,7 +4,7 @@
 
 Le but de ce TP est d'éxécuter plusieurs images Docker interdépendantes entre elles :
 - une API qui s'occupera du training de notre modèle. 
-- une image hébergeant un serveur mlflow. Ce serveur loguera les paramètres de notre entrainements ainsi que notre modèle
+- une image hébergeant un serveur mlflow. Ce serveur loguera les paramètres de notre entrainements ainsi que notre modèle. Il est important de noter que le train ici sera fake --> on se contentera de load le modèle et directement le save dans mlflow.
 - une image contenant un bucket s3 qui servira au serveur mlflow afin de loger les artifacts (VOUS NE FEREZ RIEN LA DESSUS? CE SERA DEJA FAIT)
 - une image contenant une base sql qui sert aussi au serveur mlflow (VOUS NE FEREZ RIEN LA DESSUS? CE SERA DEJA FAIT)
 - une API qui servira à exposer notre modèle : elle récupèrera le modèle sur le serveur mlflow et fera nos predictions.
