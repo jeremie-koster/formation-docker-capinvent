@@ -1,8 +1,8 @@
-tensorflow-cpu==2.3.0
-keras
-efficientnet
-fastapi
-numpy
-opencv-python
-scikit-image
-uvicorn
+tensorflow==2.18.0
+keras==3.6.0
+efficientnet==1.1.1
+fastapi==0.115.6
+numpy==2.0.2
+opencv-python==4.10.0.84
+scikit-image==0.24.0
+uvicorn==0.32.1
