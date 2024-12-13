@@ -20,7 +20,7 @@ Remarque : il suffit de donner le nom de l'image en input du call API car l'on s
 
 ```
 python 
-import request
+import requests
 requests.post('http://0.0.0.0:<exposed_port>/prediction',json={'name':'<image_name>’})
 ```
 
