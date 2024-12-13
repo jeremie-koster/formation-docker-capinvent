@@ -13,7 +13,7 @@ Remarque : il suffit de donner le nom de l'image en input du call API car l'on s
 1. Construire le Dockerfile en partant d'une image contenant tensorflow 2.3.0 (FROM tensorflow/tensorflow:2.3.0)
 2. Installer les requirements
 3. Copier le code source depuis l’environnement local vers le conteneur.
-4. Setup la command qui sera exécutée lors de l’exécution du conteneur : https://fastapi.tiangolo.com/tutorial/first-steps/ 
+4. Setup la commande qui sera exécutée lors de l’exécution du conteneur `uvicorn app.main:app --host 0.0.0.0 --port xx` 
 5. Build l’image, ne pas oublier de nommer notre image : https://docs.docker.com/engine/reference/commandline/build/
 6. Run l’image avec les bon paramètres, ne pas oublier de mapper les ports et les volumes : https://docs.docker.com/engine/reference/commandline/run/
 7. Tester l’api avec les commandes suivantes :
