@@ -10,7 +10,7 @@ Remarque : il suffit de donner le nom de l'image en input du call API car l'on s
 
 
 ## Instruction
-1. Construire le Dockerfile en partant d'une image contenant tensorflow 2.3.0 (FROM tensorflow/tensorflow:2.3.0)
+1. Construire le Dockerfile en partant d'une image contenant tensorflow 2.18.0 (FROM tensorflow/tensorflow:2.18.0)
 2. Installer les requirements
 3. Copier le code source depuis l’environnement local vers le conteneur.
 4. Setup la commande qui sera exécutée lors de l’exécution du conteneur `uvicorn app.main:app --host 0.0.0.0 --port xx` 
