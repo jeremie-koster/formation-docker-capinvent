@@ -21,7 +21,7 @@ Les images utilisées pour tester l'API sont dans le dossier `examples/`. Ce dos
 
 ## Instructions
 
-1. Construire le Dockerfile en partant d'une image de base python 3.12 (FROM FROM --platform=linux/arm64 python:3.12). Il faudra :
+1. Construire le Dockerfile en partant d'une image de base python 3.12 (FROM --platform=linux/arm64 python:3.12). Il faudra :
     
 - Installer les requirements
 - Copier le code source depuis l’environnement local vers le conteneur
