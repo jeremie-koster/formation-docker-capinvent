@@ -9,6 +9,7 @@ COPY ./src/ /app
 
 WORKDIR /app
 
+# (Optionnel) Bonus du TP
 ENV DOCKER_VOLUME_PATH="/examples"
 
 EXPOSE 8000
