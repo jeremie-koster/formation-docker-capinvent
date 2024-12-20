@@ -1,4 +1,3 @@
-# Start with the base image using `FROM`
+FROM --platform=linux/arm64 python:3.12
 
-
-CMD ["uvicorn", "...", "--host", "0.0.0.0", "--port", "..."]
+# TODO: à compléter...
