@@ -13,7 +13,7 @@ Remarque : il suffit de donner le nom de l'image en input du call API car l'on s
 1. Construire le Dockerfile en partant d'une image contenant tensorflow 2.3.0 (FROM tensorflow/tensorflow:2.3.0)
     - Installer les requirements.
     - Copier le code source depuis l’environnement local vers le conteneur.
-    - définir la variable d'env.
+    - définir la variable d'env (optionnel).
     - Setup la command qui sera exécutée lors de l’exécution du conteneur : https://fastapi.tiangolo.com/tutorial/first-steps/.
 5. Build l’image, ne pas oublier de nommer notre image : https://docs.docker.com/engine/reference/commandline/build/.
     
@@ -23,7 +23,7 @@ Remarque : il suffit de donner le nom de l'image en input du call API car l'on s
 6. Run l’image avec les bon paramètres, ne pas oublier de mapper les ports et les volumes : https://docs.docker.com/engine/reference/commandline/run/
     
     `
-    docker run -p 8001:8000 -v /<absolute_path_to_image_examples>/examples:/examples docker_tp1
+    docker run -p 8001:8000 -v <relative_path_to_image_examples>/examples:/examples docker_tp1
     `
 7. Tester l’api avec les commandes suivantes :
 
@@ -33,8 +33,10 @@ import requests
 res = requests.post('http://0.0.0.0:8001/prediction',json={'name':'<image_name>’})
 res.json()
 ```
+Ou bien en vous rendant sur le endpoint de la doc Swagger `http://0.0.0.0:8001/docs`
 
-8. Once you are done, you can stop and delete all your containers  with : 
-    `
-    docker container stop $(docker container ls -aq) && docker system prune -af --volumes
-    `
+8. Une fois terminé, vous pouvez arrêter et supprimer le conteneur, les images et les volumes non utilisés : 
+
+```
+docker container stop $(docker container ls -aq) && docker system prune -af --volumes
+```

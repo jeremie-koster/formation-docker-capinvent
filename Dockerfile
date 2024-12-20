@@ -1,4 +1,5 @@
-FROM tensorflow/tensorflow:2.18.0
+# Works for Mac M1 and M3
+FROM --platform=linux/arm64 python:3.12
 
 COPY requirements.txt .
 
